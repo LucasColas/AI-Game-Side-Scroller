@@ -5,6 +5,8 @@ import sys
 import math
 import random
 
+import neat
+
 pygame.init()
 
 W, H = 800, 437
@@ -39,7 +41,7 @@ class player(object):
     def draw(self, win):
         if self.falling:
             win.blit(self.fall, (self.x, self.y + 30))
-                
+
         elif self.jumping:
             self.y -= self.jumpList[self.jumpCount] * 1.3
             win.blit(self.jump[self.jumpCount//18], (self.x,self.y))
@@ -59,7 +61,7 @@ class player(object):
                 self.slideUp = True
             elif self.slideCount > 20 and self.slideCount < 80:
                 self.hitbox = (self.x,self.y+3,self.width-8,self.height-35)
-                
+
             if self.slideCount >= 110:
                 self.slideCount = 0
                 self.runCount = 0
@@ -67,14 +69,14 @@ class player(object):
                 self.hitbox = (self.x+ 4,self.y,self.width-24,self.height-10)
             win.blit(self.slide[self.slideCount//10], (self.x,self.y))
             self.slideCount += 1
-            
+
         else:
             if self.runCount > 42:
                 self.runCount = 0
             win.blit(self.run[self.runCount//6], (self.x,self.y))
             self.runCount += 1
             self.hitbox = (self.x+ 4,self.y,self.width-24,self.height-13)
- 
+
         #pygame.draw.rect(win, (255,0,0),self.hitbox, 2)
 
 class saw(object):
@@ -128,17 +130,17 @@ def updateFile():
         file.close()
 
         return score
-               
+
     return last
 
 
-
+"""
 def endScreen():
     global pause, score, speed, obstacles
     pause = 0
     speed = 30
     obstacles = []
-                   
+
     run = True
     while run:
         pygame.time.delay(100)
@@ -151,7 +153,7 @@ def endScreen():
                 runner.falling = False
                 runner.sliding = False
                 runner.jumpin = False
-                
+
         win.blit(bg, (0,0))
         largeFont = pygame.font.SysFont('comicsans', 80)
         lastScore = largeFont.render('Best Score: ' + str(updateFile()),1,(255,255,255))
@@ -161,7 +163,9 @@ def endScreen():
         pygame.display.update()
     score = 0
 
-        
+"""
+
+
 
 
 def redrawWindow():
@@ -190,59 +194,91 @@ obstacles = []
 pause = 0
 fallSpeed = 0
 
-while run:
-    if pause > 0:
-        pause += 1
-        if pause > fallSpeed * 2:
-            endScreen()
-        
-    score = speed//10 - 3
+def main(genomes, config):
 
-    for obstacle in obstacles:
-        if obstacle.collide(runner.hitbox):
-            runner.falling = True
-            
-            if pause == 0:
-                pause = 1
-                fallSpeed = speed
-        if obstacle.x < -64:
-            obstacles.pop(obstacles.index(obstacle))
-        else:
-            obstacle.x -= 1.4
-    
-    bgX -= 1.4
-    bgX2 -= 1.4
+    nets = []
+    ge = []
+    runners = []
 
-    if bgX < bg.get_width() * -1:
-        bgX = bg.get_width()
-    if bgX2 < bg.get_width() * -1:
-        bgX2 = bg.get_width() 
-    
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            pygame.quit()
-            run = False
-            
-        if event.type == USEREVENT+1:
-            speed += 1
-            
-        if event.type == USEREVENT+2:
-            r = random.randrange(0,2)
-            if r == 0:
-                obstacles.append(saw(810, 310, 64, 64))
-            elif r == 1:
-                obstacles.append(spike(810, 0, 48, 310))
-                
-    if runner.falling == False:
-        keys = pygame.key.get_pressed()
+    for _,g in genomes:
+        net = neat.nn.FeedForwardNetwork.create(g, config)
+        nets.append(net)
+        runners.append(player(200, 313, 64, 64))
+        g.fitness = 0
+        ge.append(g)
 
-        if keys[pygame.K_SPACE] or keys[pygame.K_UP]:
-            if not(runner.jumping):
-                runner.jumping = True
 
-        if keys[pygame.K_DOWN]:
-            if not(runner.sliding):
-                runner.sliding = True
 
-    clock.tick(speed)
-    redrawWindow()
+
+    while run:
+        """
+        if pause > 0:
+            pause += 1
+            if pause > fallSpeed * 2:
+                endScreen()
+        """
+
+        score = speed//10 - 3
+
+        for obstacle in obstacles:
+            if obstacle.collide(runner.hitbox):
+                runner.falling = True
+
+                if pause == 0:
+                    pause = 1
+                    fallSpeed = speed
+            if obstacle.x < -64:
+                obstacles.pop(obstacles.index(obstacle))
+            else:
+                obstacle.x -= 1.4
+
+        bgX -= 1.4
+        bgX2 -= 1.4
+
+        if bgX < bg.get_width() * -1:
+            bgX = bg.get_width()
+        if bgX2 < bg.get_width() * -1:
+            bgX2 = bg.get_width()
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                run = False
+
+            if event.type == USEREVENT+1:
+                speed += 1
+
+            if event.type == USEREVENT+2:
+                r = random.randrange(0,2)
+                if r == 0:
+                    obstacles.append(saw(810, 310, 64, 64))
+                elif r == 1:
+                    obstacles.append(spike(810, 0, 48, 310))
+        """
+        if runner.falling == False:
+            keys = pygame.key.get_pressed()
+
+            if keys[pygame.K_SPACE] or keys[pygame.K_UP]:
+                if not(runner.jumping):
+                    runner.jumping = True
+
+            if keys[pygame.K_DOWN]:
+                if not(runner.sliding):
+                    runner.sliding = True
+        """
+
+        clock.tick(speed)
+        redrawWindow()
+
+def run(config_path):
+    max_gen = 150
+    config = neat.Config.Config(neat.DefaultGenome, neat.DefaultReproduction, neat.DefaultSpeciesSet,
+        neat.DefaultStagnation, config_path)
+    p = neat.Population(config)
+
+    p.add_reporter(neat.StdOutReporter(True))
+    stats = neat.StatisticsReporter()
+
+    p.add_reporter(stats)
+
+    winner = p.run(main, max_gen)
