@@ -199,6 +199,8 @@ def main(genomes, config):
     nets = []
     ge = []
     runners = []
+    saws = []
+    spikes = []
 
     for _,g in genomes:
         net = neat.nn.FeedForwardNetwork.create(g, config)
@@ -206,9 +208,6 @@ def main(genomes, config):
         runners.append(player(200, 313, 64, 64))
         g.fitness = 0
         ge.append(g)
-
-
-
 
     while run:
         """
@@ -272,7 +271,7 @@ def main(genomes, config):
 
 def run(config_path):
     max_gen = 120
-    config = neat.Config.Config(neat.DefaultGenome, neat.DefaultReproduction, neat.DefaultSpeciesSet,
+    config = neat.config.Config(neat.DefaultGenome, neat.DefaultReproduction, neat.DefaultSpeciesSet,
         neat.DefaultStagnation, config_path)
     p = neat.Population(config)
 
