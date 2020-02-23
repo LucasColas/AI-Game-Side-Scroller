@@ -271,7 +271,7 @@ def main(genomes, config):
         redrawWindow()
 
 def run(config_path):
-    max_gen = 150
+    max_gen = 120
     config = neat.Config.Config(neat.DefaultGenome, neat.DefaultReproduction, neat.DefaultSpeciesSet,
         neat.DefaultStagnation, config_path)
     p = neat.Population(config)
