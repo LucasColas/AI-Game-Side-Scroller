@@ -5,11 +5,11 @@ import sys
 import math
 import random
 import visualize
-
 import neat
 
-pygame.init()
 
+#Initialize
+pygame.init()
 W, H = 800, 437
 win = pygame.display.set_mode((W,H))
 pygame.display.set_caption('Side Scroller')
