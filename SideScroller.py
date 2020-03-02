@@ -7,7 +7,6 @@ import random
 import visualize
 import neat
 
-
 #Initialize
 pygame.init()
 W, H = 800, 437
