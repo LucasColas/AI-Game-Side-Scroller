@@ -220,16 +220,19 @@ def main(genomes, config):
         score = speed//10 - 3
 
         for obstacle in obstacles:
-            if obstacle.collide(runner.hitbox):
-                runner.falling = True
+            for x, runner in enumerate(runners):
+                if obstacle.collide(runner.hitbox):
+                    runner.falling = True
 
-                if pause == 0:
-                    pause = 1
-                    fallSpeed = speed
-            if obstacle.x < -64:
-                obstacles.pop(obstacles.index(obstacle))
-            else:
-                obstacle.x -= 1.4
+                    """
+                    if pause == 0:
+                        pause = 1
+                        fallSpeed = speed
+                    """
+                if obstacle.x < -64:
+                    obstacles.pop(obstacles.index(obstacle))
+                else:
+                    obstacle.x -= 1.4
 
         bgX -= 1.4
         bgX2 -= 1.4
@@ -283,8 +286,7 @@ def run(config_path):
     winner = p.run(main, max_gen)
 
 if __name__ == "__main__":
+
     local_dir = os.path.dirname(__file__)
-
     config_path = os.path.join(local_dir, "NeatConfig.txt")
-
     run(config_path)
