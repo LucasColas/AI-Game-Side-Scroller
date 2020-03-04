@@ -222,6 +222,10 @@ def main(genomes, config):
 
         score = speed//10 - 3
 
+        for x, runner in enumerate(runners):
+            runner
+            ge[x].fitness += 0.1
+
         for obstacle in obstacles:
             for x, runner in enumerate(runners):
                 if obstacle.collide(runner.hitbox):
