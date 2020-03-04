@@ -288,8 +288,8 @@ def run(config_path):
     max_gen = 120
     config = neat.config.Config(neat.DefaultGenome, neat.DefaultReproduction, neat.DefaultSpeciesSet,
         neat.DefaultStagnation, config_path)
-    p = neat.Population(config)
 
+    p = neat.Population(config)
     p.add_reporter(neat.StdOutReporter(True))
     stats = neat.StatisticsReporter()
     p.add_reporter(stats)
