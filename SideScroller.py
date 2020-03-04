@@ -258,7 +258,7 @@ def main(genomes, config):
             if event.type == pygame.QUIT:
                 pygame.quit()
                 run = False
-
+        """
             if event.type == USEREVENT+1:
                 speed += 1
 
@@ -268,7 +268,7 @@ def main(genomes, config):
                     obstacles.append(saw(810, 310, 64, 64))
                 elif r == 1:
                     obstacles.append(spike(810, 0, 48, 310))
-        """
+        
         if runner.falling == False:
             keys = pygame.key.get_pressed()
 
