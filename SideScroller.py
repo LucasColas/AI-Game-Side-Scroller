@@ -226,6 +226,11 @@ def main(genomes, config):
             for x, runner in enumerate(runners):
                 if obstacle.collide(runner.hitbox):
                     runner.falling = True
+                    ge[x].fitness -= 1
+                    runners.remove(runner)
+                    runners.pop(x)
+                    nets.pop(x)
+					ge.pop(x)
 
                     """
                     if pause == 0:
