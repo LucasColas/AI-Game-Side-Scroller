@@ -80,7 +80,10 @@ class player(object):
         #pygame.draw.rect(win, (255,0,0),self.hitbox, 2)
 
 class saw(object):
-    rotate = [pygame.image.load(os.path.join('images', 'SAW0.PNG')),pygame.image.load(os.path.join('images', 'SAW1.PNG')),pygame.image.load(os.path.join('images', 'SAW2.PNG')),pygame.image.load(os.path.join('images', 'SAW3.PNG'))]
+    rotate = [pygame.image.load(os.path.join('images', 'SAW0.PNG')),
+    pygame.image.load(os.path.join('images', 'SAW1.PNG')),
+    pygame.image.load(os.path.join('images', 'SAW2.PNG')),
+    pygame.image.load(os.path.join('images', 'SAW3.PNG'))]
     def __init__(self,x,y,width,height):
         self.x = x
         self.y = y
