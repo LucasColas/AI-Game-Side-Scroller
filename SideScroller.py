@@ -73,6 +73,7 @@ class player(object):
         else:
             if self.runCount > 42:
                 self.runCount = 0
+                
             win.blit(self.run[self.runCount//6], (self.x,self.y))
             self.runCount += 1
             self.hitbox = (self.x+ 4,self.y,self.width-24,self.height-13)
