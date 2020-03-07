@@ -73,7 +73,7 @@ class player(object):
         else:
             if self.runCount > 42:
                 self.runCount = 0
-                
+
             win.blit(self.run[self.runCount//6], (self.x,self.y))
             self.runCount += 1
             self.hitbox = (self.x+ 4,self.y,self.width-24,self.height-13)
@@ -228,7 +228,7 @@ def main(genomes, config):
             ge[x].fitness += 0.1
 
         for obstacle in obstacles:
-            for x, runner in enumerate(runners):
+            for runner in runners:
                 if obstacle.collide(runner.hitbox):
                     runner.falling = True
                     ge[x].fitness -= 1
