@@ -283,8 +283,8 @@ def main(genomes, config):
                 if not(runner.sliding):
                     runner.sliding = True
         """
-        FPS = 50
-        clock.tick(50)
+        FPS = 30
+        clock.tick(FPS)
         redrawWindow()
 
 def run(config_path):
