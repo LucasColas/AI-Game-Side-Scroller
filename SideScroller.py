@@ -189,6 +189,7 @@ pygame.time.set_timer(USEREVENT+1, 500)
 pygame.time.set_timer(USEREVENT+2, 3000)
 speed = 30
 
+
 score = 0
 
 run = True
@@ -282,8 +283,8 @@ def main(genomes, config):
                 if not(runner.sliding):
                     runner.sliding = True
         """
-
-        clock.tick(speed)
+        FPS = 50
+        clock.tick(50)
         redrawWindow()
 
 def run(config_path):
