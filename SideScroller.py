@@ -195,8 +195,7 @@ score = 0
 run = True
 runner = player(200, 313, 64, 64)
 
-obstacles = [saw(810, 310, 64, 64)]
-obstacles2 = [spike(810, 0, 48, 310)] #2 lists because we have 2 different obstacles
+
 pause = 0
 fallSpeed = 0
 
@@ -214,6 +213,10 @@ def main(genomes, config):
         runners.append(player(200, 313, 64, 64))
         g.fitness = 0
         ge.append(g)
+
+    obstacles = [saw(810, 310, 64, 64)]
+    obstacles2 = [spike(810, 0, 48, 310)] #2 lists because we have 2 different obstacles
+
 
     while run:
         """
