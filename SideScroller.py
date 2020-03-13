@@ -247,6 +247,7 @@ def main(genomes, config): #evaluate genomes
                 if not(runner.jumping):
                     runner.jumping = True
 
+        rem = []
         for obstacle in obstacles:
             for runner in runners:
                 if obstacle.collide(runner.hitbox):
