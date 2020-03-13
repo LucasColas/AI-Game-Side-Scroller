@@ -229,7 +229,7 @@ def main(genomes, config): #evaluate genomes
 
         clock.tick(30)
 
-        score = speed//10 - 3
+        #score = speed//10 - 3
 
         for x, runner in enumerate(runners):
             runner
