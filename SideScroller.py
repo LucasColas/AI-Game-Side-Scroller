@@ -226,6 +226,9 @@ def main(genomes, config): #evaluate genomes
                 endScreen()
         """
 
+
+        clock.tick(30)
+
         score = speed//10 - 3
 
         for x, runner in enumerate(runners):
@@ -286,8 +289,7 @@ def main(genomes, config): #evaluate genomes
                 if not(runner.sliding):
                     runner.sliding = True
         """
-        FPS = 30
-        clock.tick(FPS)
+
         redrawWindow()
 
 def run(config_path):
