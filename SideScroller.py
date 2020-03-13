@@ -231,6 +231,8 @@ def main(genomes, config): #evaluate genomes
 
         #score = speed//10 - 3
 
+        inputs = (runner.y, abs(runner.y - saw.y), abs(runner.y - spike.y))
+
         for x, runner in enumerate(runners):
             runner.draw()
             ge[x].fitness += 0.1
