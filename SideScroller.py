@@ -235,13 +235,13 @@ def main(genomes, config): #evaluate genomes
             runner.draw()
             ge[x].fitness += 0.1
 
-            output = nets[x].activate(input)
+            output = nets[x].activate(inputs)
 
             if output[0] > 0.5:
                 if not(runner.sliding):
                     runner.sliding = True
 
-            elif output[0] < 0.5 and runner.y == 0:
+            elif output[1] < 0.5 and runner.y == 313:
                 if not(runner.jumping):
                     runner.jumping = True
 
