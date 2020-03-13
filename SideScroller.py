@@ -232,8 +232,18 @@ def main(genomes, config): #evaluate genomes
         #score = speed//10 - 3
 
         for x, runner in enumerate(runners):
-            runner
+            runner.draw()
             ge[x].fitness += 0.1
+
+            output = nets[x].activate(input)
+
+            if output[0] > 0.5:
+                if not(runner.sliding):
+                    runner.sliding = True
+
+            elif output[0] < 0.5 and runner.y == 0:
+                if not(runner.jumping):
+                    runner.jumping = True
 
         for obstacle in obstacles:
             for runner in runners:
