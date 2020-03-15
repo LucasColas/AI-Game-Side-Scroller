@@ -215,8 +215,7 @@ def main(genomes, config): #evaluate genomes
         ge.append(g)
 
     obstacles = [saw(810, 310, 64, 64), spike(810, 0, 48, 310)]
-    #obstacles2 = [spike(810, 0, 48, 310)] #2 lists because we have 2 different obstacles
-
+    #obstacles2 = [spike(810, 0, 48, 310)]
 
     while run:
         """
@@ -232,12 +231,18 @@ def main(genomes, config): #evaluate genomes
         #score = speed//10 - 3
 
         obstacle_get = 0
-
-
+        """
         if len(runners) > 0:
             if len(obstacles) > 1 and runners[0].x > obstacles[0].x
 
+
         inputs = (abs(runner.x - saw.y), abs(runner.y - spike.y))
+
+        for x in obstacles:
+            if obstacles[x]. > runners[0].x:
+
+        """
+
 
         for x, runner in enumerate(runners):
             runner.draw()
