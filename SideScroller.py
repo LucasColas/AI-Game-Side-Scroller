@@ -80,6 +80,12 @@ class player(object):
 
         #pygame.draw.rect(win, (255,0,0),self.hitbox, 2)
 
+    def get_distance(obstacles):
+        for x, obstacle in obstacles:
+            if obstacles[x].x > player.x
+            break
+        return obstacles[x].x
+
 class saw(object):
     rotate = [pygame.image.load(os.path.join('images', 'SAW0.PNG')),
     pygame.image.load(os.path.join('images', 'SAW1.PNG')),
@@ -198,6 +204,8 @@ runner = player(200, 313, 64, 64)
 
 pause = 0
 fallSpeed = 0
+
+obstacles = [saw(810, 310, 64, 64), spike(810, 0, 48, 310)]
 
 def main(genomes, config): #evaluate genomes
 
