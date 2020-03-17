@@ -80,7 +80,7 @@ class player(object):
 
         #pygame.draw.rect(win, (255,0,0),self.hitbox, 2)
 
-    def get_distance(obstacles):
+    def get_distance(self, obstacles):
         for obstacle in obstacles:
             if obstacles.x > player.x:
                 break
