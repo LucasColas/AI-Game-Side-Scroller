@@ -82,8 +82,8 @@ class player(object):
 
     def get_distance(self, obstacles):
         for obstacle in obstacles:
-            if obstacles[obstacle].x > self.x:
-                return obstacles[obstacle].x
+            if obstacle.x > self.x:
+                return obstacle.x
 
 
 class saw(object):
