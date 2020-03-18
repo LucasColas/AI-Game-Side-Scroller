@@ -120,6 +120,9 @@ class saw(object):
 
 class spike(saw):
     img = pygame.image.load(os.path.join('images', 'spike.png'))
+    def __init__(self, x, y):
+        self.y = y
+        self.x = x
     def draw(self,win):
         self.hitbox = (self.x + 10, self.y, 28,315)
         #pygame.draw.rect(win, (255,0,0), self.hitbox, 2)
@@ -255,7 +258,7 @@ def main(genomes, config): #evaluate genomes
 
         """
 
-        inputs = (runner.x, runner.get_distance(obstacles))
+        inputs = (runner.x, runner.get_distance(obstacles), saw.y, spike.y)
         for x, runner in enumerate(runners):
             runner.draw()
             ge[x].fitness += 0.1
@@ -306,7 +309,7 @@ def main(genomes, config): #evaluate genomes
             increase_fitness = 5
             for g in ge:
 				g.fitness += increase_fitness
-                
+
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
