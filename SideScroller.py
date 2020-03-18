@@ -84,7 +84,7 @@ class player(object):
         for obstacle in obstacles:
             if obstacles.x > player.x:
                 break
-        return obstacles.x
+        return obstacles.x 
 
 class saw(object):
     rotate = [pygame.image.load(os.path.join('images', 'SAW0.PNG')),
