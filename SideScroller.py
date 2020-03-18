@@ -82,9 +82,9 @@ class player(object):
 
     def get_distance(self, obstacles):
         for obstacle in obstacles:
-            if obstacles.x > player.x:
+            if obstacles[obstacle].x > player.x:
                 break
-        return obstacles.x 
+        return obstacles[obstacle].x
 
 class saw(object):
     rotate = [pygame.image.load(os.path.join('images', 'SAW0.PNG')),
