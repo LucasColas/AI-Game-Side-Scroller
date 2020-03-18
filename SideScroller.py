@@ -89,6 +89,7 @@ class player(object):
                 return saw.x
 
 
+
 class saw(object):
     rotate = [pygame.image.load(os.path.join('images', 'SAW0.PNG')),
     pygame.image.load(os.path.join('images', 'SAW1.PNG')),
@@ -225,7 +226,7 @@ def main(genomes, config): #evaluate genomes
         g.fitness = 0
         ge.append(g)
 
-    obstacles = [saw(810, 310, 64, 64), spike(810, 0, 48, 310)]
+    #obstacles = [saw(810, 310, 64, 64), spike(810, 0, 48, 310)]
     #obstacles2 = [spike(810, 0, 48, 310)]
 
     while run:
@@ -254,7 +255,7 @@ def main(genomes, config): #evaluate genomes
 
         """
 
-
+        inputs = (runner.x, runner.get_distance(obstacles))
         for x, runner in enumerate(runners):
             runner.draw()
             ge[x].fitness += 0.1
