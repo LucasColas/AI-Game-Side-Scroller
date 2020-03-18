@@ -326,6 +326,8 @@ def main(genomes, config): #evaluate genomes
                     runner.sliding = True
         """
 
+        
+
         redrawWindow()
 
 def run(config_path):
