@@ -299,6 +299,15 @@ def main(genomes, config): #evaluate genomes
         if bgX2 < bg.get_width() * -1:
             bgX2 = bg.get_width()
 
+        add_obstacle = False
+
+        if add_obstacle:
+            score += 1
+            increase_fitness = 5
+            for g in ge:
+				g.fitness += increase_fitness
+                
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
@@ -326,7 +335,7 @@ def main(genomes, config): #evaluate genomes
                     runner.sliding = True
         """
 
-        
+
 
         redrawWindow()
 
