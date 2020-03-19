@@ -260,10 +260,11 @@ def main(genomes, config): #evaluate genomes
 
         obstacle_get = 0
         if len(runners) > 0:
-            if len(runners) > 1 and runners[0].y > obstacles[x].y
+            if len(runners) > 1 and runners[0].y > obstacles[0].x + obstacles[0].y:
+                obstacle_get = 1
 
 
-        inputs = (runner.x, runner.get_distance(obstacles), saw.y, spike.y)
+        inputs = (runner.x, runner.get_distance(obstacles))
         for x, runner in enumerate(runners):
             runner.draw()
             ge[x].fitness += 0.1
