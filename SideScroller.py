@@ -251,12 +251,12 @@ def main(genomes, config): #evaluate genomes
                 obstacle_get = 1
 
 
-        #inputs = (runner.x, runner.get_distance(obstacles))
+        #inputs = (runner.x, abs(runner.x - obstacles[obstacle_get].x))
         for x, runner in enumerate(runners):
             runner.draw()
             ge[x].fitness += 0.1
 
-            output = nets[x].activate(runner.x, abs(runner.x - obstacles[obstacle_get].x))
+            output = nets[x].activate(inputs)
 
             if output[0] > 0.5:
                 if not(runner.sliding):
