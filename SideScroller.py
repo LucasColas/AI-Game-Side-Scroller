@@ -245,7 +245,7 @@ def main(genomes, config): #evaluate genomes
 
         #score = speed//10 - 3
 
-        obstacle_get = 0
+
         """
         if len(runners) > 0:
             if len(obstacles) > 1 and runners[0].x > obstacles[0].x
@@ -257,6 +257,11 @@ def main(genomes, config): #evaluate genomes
             if obstacles[x]. > runners[0].x:
 
         """
+
+        obstacle_get = 0
+        if len(runners) > 0:
+            if len(runners) > 1 and runners[0].y > obstacles[x].y
+
 
         inputs = (runner.x, runner.get_distance(obstacles), saw.y, spike.y)
         for x, runner in enumerate(runners):
