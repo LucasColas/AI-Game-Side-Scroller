@@ -245,31 +245,18 @@ def main(genomes, config): #evaluate genomes
 
         #score = speed//10 - 3
 
-
-        """
-        if len(runners) > 0:
-            if len(obstacles) > 1 and runners[0].x > obstacles[0].x
-
-
-        inputs = (abs(runner.x - saw.y), abs(runner.y - spike.y))
-
-        for x in obstacles:
-            if obstacles[x]. > runners[0].x:
-
-        """
-
         obstacle_get = 0
         if len(runners) > 0:
             if len(runners) > 1 and runners[0].y > obstacles[0].x + obstacles[0].y:
                 obstacle_get = 1
 
 
-        inputs = (runner.x, runner.get_distance(obstacles))
+        #inputs = (runner.x, runner.get_distance(obstacles))
         for x, runner in enumerate(runners):
             runner.draw()
             ge[x].fitness += 0.1
 
-            output = nets[x].activate(inputs)
+            output = nets[x].activate(runner.x, abs(runner.x - obstacles[obstacle_get].x))
 
             if output[0] > 0.5:
                 if not(runner.sliding):
