@@ -246,20 +246,23 @@ def main(genomes, config): #evaluate genomes
                 obstacle_get = 1
         """
 
+        inputs = (get_distance(obstacle))
+
         #inputs = (runner.x, abs(runner.x - obstacles[obstacle_get].x))
         for x, runner in enumerate(runners):
             runner.draw()
             ge[x].fitness += 0.1
 
-            output = nets[x].activate(inputs)
+            for i, g in enumerate(ge):
+                outputs = nets[i].activate(inputs)
 
-            if output[0] > 0.5:
-                if not(runner.sliding):
-                    runner.sliding = True
+                if outputs[0] > 0.5:
+                    if not(runner.sliding):
+                        runner.sliding = True
 
-            elif output[1] < 0.5 and runner.y == 313:
-                if not(runner.jumping):
-                    runner.jumping = True
+                elif outputs[1] < 0.5 and runner.y == 313:
+                    if not(runner.jumping):
+                        runner.jumping = True
 
         rem = []
         for obstacle in obstacles:
