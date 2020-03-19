@@ -239,12 +239,12 @@ def main(genomes, config): #evaluate genomes
         clock.tick(30)
 
         #score = speed//10 - 3
-
+        """
         obstacle_get = 0
         if len(runners) > 0:
             if len(runners) > 1 and runners[0].y > obstacles[0].x + obstacles[0].y:
                 obstacle_get = 1
-
+        """
 
         #inputs = (runner.x, abs(runner.x - obstacles[obstacle_get].x))
         for x, runner in enumerate(runners):
