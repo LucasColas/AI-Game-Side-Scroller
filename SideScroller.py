@@ -284,11 +284,8 @@ def main(genomes, config): #evaluate genomes
                 obstacle.x -= 1.4
             if obstacle.x < runner.x:
                 add_obstacle = True
-            if obstacle.x + saw.rotate.get_width() < 0:
+            if obstacle.x + obstacle.width < 0:
                 rem.append(obstacle)
-            if obstacle.x + spike.img.get_width() < 0:
-                rem.append(obstacle)
-
 
         bgX -= 1.4
         bgX2 -= 1.4
