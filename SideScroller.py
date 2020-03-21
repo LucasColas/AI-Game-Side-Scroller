@@ -97,6 +97,7 @@ class saw(object):
         self.height = height
         self.rotateCount = 0
         self.vel = 1.4
+        self.passed = False
 
     def draw(self,win):
         self.hitbox = (self.x + 10, self.y + 5, self.width - 20, self.height - 5)
@@ -118,6 +119,8 @@ class spike(saw):
     def __init__(self, x, y):
         self.y = y
         self.x = x
+
+        self.passed = False
     def draw(self,win):
         self.hitbox = (self.x + 10, self.y, 28,315)
         #pygame.draw.rect(win, (255,0,0), self.hitbox, 2)
@@ -255,6 +258,8 @@ def main(genomes, config): #evaluate genomes
                     if not(runner.jumping):
                         runner.jumping = True
 
+        add_obstacle = False
+
         rem = []
         for obstacle in obstacles:
             for runner in runners:
@@ -271,11 +276,14 @@ def main(genomes, config): #evaluate genomes
                         pause = 1
                         fallSpeed = speed
                     """
-                if obstacle.x < -64:
-                    obstacles.pop(obstacles.index(obstacle))
-                else:
-                    obstacle.x -= 1.4
+            if obstacle.x < -64:
+                obstacles.pop(obstacles.index(obstacle))
+            else:
+                obstacle.x -= 1.4
+            if obstacle.x < runner.x:
+                add_obstacle = True
 
+        
         bgX -= 1.4
         bgX2 -= 1.4
 
@@ -284,7 +292,7 @@ def main(genomes, config): #evaluate genomes
         if bgX2 < bg.get_width() * -1:
             bgX2 = bg.get_width()
 
-        add_obstacle = False
+
 
         if add_obstacle:
             score += 1
