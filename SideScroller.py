@@ -271,7 +271,7 @@ def main(genomes, config): #evaluate genomes
                     runners.remove(runner)
                     runners.pop(x)
                     nets.pop(x)
-					ge.pop(x)
+                    ge.pop(x)
 
                     """
                     if pause == 0:
