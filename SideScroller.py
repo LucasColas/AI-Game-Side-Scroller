@@ -224,8 +224,6 @@ def main(genomes, config): #evaluate genomes
         g.fitness = 0
         ge.append(g)
 
-    #obstacles = [saw(810, 310, 64, 64), spike(810, 0, 48, 310)]
-    #obstacles2 = [spike(810, 0, 48, 310)]
 
     while run:
         """
@@ -239,16 +237,9 @@ def main(genomes, config): #evaluate genomes
         clock.tick(30)
 
         #score = speed//10 - 3
-        """
-        obstacle_get = 0
-        if len(runners) > 0:
-            if len(runners) > 1 and runners[0].y > obstacles[0].x + obstacles[0].y:
-                obstacle_get = 1
-        """
 
         inputs = (get_distance(obstacle))
 
-        #inputs = (runner.x, abs(runner.x - obstacles[obstacle_get].x))
         for x, runner in enumerate(runners):
             runner.draw()
             ge[x].fitness += 0.1
