@@ -320,8 +320,9 @@ def main(genomes, config):
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                pygame.quit()
                 run = False
+                pygame.quit()
+                quit()
         """
             if event.type == USEREVENT+1:
                 speed += 1
