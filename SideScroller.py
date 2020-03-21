@@ -37,6 +37,7 @@ class player(object):
         self.jumpCount = 0
         self.runCount = 0
         self.slideUp = False
+        self.hitbox = None
 
     def draw(self, win):
         if self.falling:
@@ -98,6 +99,7 @@ class saw(object):
         self.rotateCount = 0
         self.vel = 1.4
         self.passed = False
+        self.hitbox = None
 
     def draw(self,win):
         self.hitbox = (self.x + 10, self.y + 5, self.width - 20, self.height - 5)
@@ -121,6 +123,7 @@ class spike(saw):
         self.x = x
         self.width = width
         self.height = height
+        self.hitbox = None
 
         self.passed = False
     def draw(self,win):
