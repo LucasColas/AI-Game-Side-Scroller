@@ -284,7 +284,9 @@ def main(genomes, config): #evaluate genomes
                 obstacle.x -= 1.4
             if obstacle.x < runner.x:
                 add_obstacle = True
-            if obstacle.x + obstacle.get_width() < 0:
+            if obstacle.x + saw.rotate < 0:
+                rem.append(obstacle)
+            if obstacle.x + spike.img < 0:
                 rem.append(obstacle)
 
 
