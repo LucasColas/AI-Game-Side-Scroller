@@ -135,7 +135,7 @@ class spike(saw):
                 return True
         return False
 
-
+"""
 def updateFile():
     f = open('scores.txt','r')
     file = f.readlines()
@@ -150,7 +150,7 @@ def updateFile():
         return score
 
     return last
-
+"""
 
 """
 def endScreen():
@@ -190,12 +190,12 @@ def redrawWindow():
     largeFont = pygame.font.SysFont('comicsans', 30)
     win.blit(bg, (bgX, 0))
     win.blit(bg, (bgX2,0))
-    text = largeFont.render('Score: ' + str(score), 1, (255,255,255))
+    #text = largeFont.render('Score: ' + str(score), 1, (255,255,255))
     runner.draw(win)
     for obstacle in obstacles:
         obstacle.draw(win)
 
-    win.blit(text, (700, 10))
+    #win.blit(text, (700, 10))
     pygame.display.update()
 
 
@@ -203,7 +203,7 @@ def redrawWindow():
 #pygame.time.set_timer(USEREVENT+2, 3000)
 speed = 30
 
-score = 0
+
 
 runner = player(200, 313, 64, 64)
 
@@ -213,7 +213,11 @@ fallSpeed = 0
 
 obstacles = [saw(810, 310, 64, 64), spike(810, 0, 48, 310)]
 
-def main(genomes, config): #evaluate genomes
+def main(genomes, config):
+
+    bgX = 0
+    bgX2 = bg.get_width()
+
 
     nets = []
     ge = []
@@ -287,6 +291,8 @@ def main(genomes, config): #evaluate genomes
             if obstacle.x + obstacle.width < 0:
                 rem.append(obstacle)
 
+
+
         bgX -= 1.4
         bgX2 -= 1.4
 
@@ -296,7 +302,7 @@ def main(genomes, config): #evaluate genomes
             bgX2 = bg.get_width()
 
 
-
+        score = 0
         if add_obstacle:
             score += 1
             increase_fitness = 5
