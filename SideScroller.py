@@ -198,14 +198,12 @@ def redrawWindow():
     pygame.display.update()
 
 
-pygame.time.set_timer(USEREVENT+1, 500)
-pygame.time.set_timer(USEREVENT+2, 3000)
+#pygame.time.set_timer(USEREVENT+1, 500)
+#pygame.time.set_timer(USEREVENT+2, 3000)
 speed = 30
-
 
 score = 0
 
-run = True
 runner = player(200, 313, 64, 64)
 
 
