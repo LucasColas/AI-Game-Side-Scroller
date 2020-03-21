@@ -282,6 +282,8 @@ def main(genomes, config): #evaluate genomes
                 obstacle.x -= 1.4
             if obstacle.x < runner.x:
                 add_obstacle = True
+            if obstacle.x + obstacle.spike.hitbox.get_width() < 0:
+                rem.append(obstacle)
 
 
         bgX -= 1.4
@@ -292,7 +294,7 @@ def main(genomes, config): #evaluate genomes
         if bgX2 < bg.get_width() * -1:
             bgX2 = bg.get_width()
 
-        rem = []
+
 
         if add_obstacle:
             score += 1
