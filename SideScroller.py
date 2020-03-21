@@ -184,7 +184,7 @@ def endScreen():
 """
 
 
-obstacles = [saw(810, 310, 64, 64)]
+
 
 def redrawWindow():
     largeFont = pygame.font.SysFont('comicsans', 30)
@@ -207,16 +207,13 @@ speed = 30
 
 runner = player(200, 313, 64, 64)
 
-
+obstacles = []
 pause = 0
 fallSpeed = 0
 
 
 
 def main(genomes, config):
-
-
-
 
     nets = []
     ge = []
