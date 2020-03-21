@@ -292,7 +292,7 @@ def main(genomes, config): #evaluate genomes
         if bgX2 < bg.get_width() * -1:
             bgX2 = bg.get_width()
 
-
+        rem = []
 
         if add_obstacle:
             score += 1
@@ -304,7 +304,6 @@ def main(genomes, config): #evaluate genomes
                     obstacles.append(saw(810, 310, 64, 64))
                 elif r == 1:
                     obstacles.append(spike(810, 0, 48, 310))
-
 
 
         for event in pygame.event.get():
@@ -333,8 +332,6 @@ def main(genomes, config): #evaluate genomes
                 if not(runner.sliding):
                     runner.sliding = True
         """
-
-
 
         redrawWindow()
 
