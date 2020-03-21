@@ -283,7 +283,7 @@ def main(genomes, config): #evaluate genomes
             if obstacle.x < runner.x:
                 add_obstacle = True
 
-        
+
         bgX -= 1.4
         bgX2 -= 1.4
 
@@ -299,6 +299,12 @@ def main(genomes, config): #evaluate genomes
             increase_fitness = 5
             for g in ge:
 				g.fitness += increase_fitness
+                r = random.randrange(0,2)
+                if r == 0:
+                    obstacles.append(saw(810, 310, 64, 64))
+                elif r == 1:
+                    obstacles.append(spike(810, 0, 48, 310))
+
 
 
         for event in pygame.event.get():
