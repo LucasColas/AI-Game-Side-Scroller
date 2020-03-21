@@ -307,6 +307,9 @@ def main(genomes, config): #evaluate genomes
                 elif r == 1:
                     obstacles.append(spike(810, 0, 48, 310))
 
+        for r in rem:
+            obstacles.remove(r)
+
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
