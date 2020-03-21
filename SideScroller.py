@@ -184,7 +184,7 @@ def endScreen():
 """
 
 
-
+obstacles = [saw(810, 310, 64, 64)]
 
 def redrawWindow():
     largeFont = pygame.font.SysFont('comicsans', 30)
@@ -211,12 +211,11 @@ runner = player(200, 313, 64, 64)
 pause = 0
 fallSpeed = 0
 
-obstacles = [saw(810, 310, 64, 64), spike(810, 0, 48, 310)]
+
 
 def main(genomes, config):
 
-    bgX = 0
-    bgX2 = bg.get_width()
+
 
 
     nets = []
@@ -235,6 +234,23 @@ def main(genomes, config):
 
     run = True
     while run:
+
+        bgX = 0
+        bgX2 = bg.get_width()
+
+        bgX -= 1.4
+        bgX2 -= 1.4
+
+        if bgX < bg.get_width() * -1:
+            bgX = bg.get_width()
+        if bgX2 < bg.get_width() * -1:
+            bgX2 = bg.get_width()
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                run = False
+                pygame.quit()
+                quit()
 
         """
         if pause > 0:
@@ -293,13 +309,7 @@ def main(genomes, config):
 
 
 
-        bgX -= 1.4
-        bgX2 -= 1.4
 
-        if bgX < bg.get_width() * -1:
-            bgX = bg.get_width()
-        if bgX2 < bg.get_width() * -1:
-            bgX2 = bg.get_width()
 
 
         score = 0
@@ -317,12 +327,6 @@ def main(genomes, config):
         for r in rem:
             obstacles.remove(r)
 
-
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                run = False
-                pygame.quit()
-                quit()
         """
             if event.type == USEREVENT+1:
                 speed += 1
