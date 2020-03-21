@@ -245,7 +245,7 @@ def main(genomes, config): #evaluate genomes
 
 
         for x, runner in enumerate(runners):
-            runner.draw()
+            #runner.draw()
             ge[x].fitness += 0.1
 
             for i, g in enumerate(ge):
@@ -284,7 +284,7 @@ def main(genomes, config): #evaluate genomes
                 obstacle.x -= 1.4
             if obstacle.x < runner.x:
                 add_obstacle = True
-            if obstacle.x + obstacle.spike.hitbox.get_width() < 0:
+            if obstacle.x + obstacle.get_width() < 0:
                 rem.append(obstacle)
 
 
@@ -302,7 +302,7 @@ def main(genomes, config): #evaluate genomes
             score += 1
             increase_fitness = 5
             for g in ge:
-				g.fitness += increase_fitness
+                g.fitness += increase_fitness
                 r = random.randrange(0,2)
                 if r == 0:
                     obstacles.append(saw(810, 310, 64, 64))
@@ -358,5 +358,5 @@ def run(config_path):
 if __name__ == "__main__":
 
     local_dir = os.path.dirname(__file__)
-    config_path = os.path.join(local_dir, "NeatConfig.txt")
+    config_path = os.path.join(local_dir, "NeatConfigSideScroller.txt")
     run(config_path)
