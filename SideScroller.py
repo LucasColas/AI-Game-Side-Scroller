@@ -299,27 +299,23 @@ def main(genomes, config):
                 obstacles.pop(obstacles.index(obstacle))
             else:
                 obstacle.x -= 1.4
-            if obstacle.x < runner.x:
+            if obstacle.x < runner.x and len(obstacles) == 1:
                 add_obstacle = True
             if obstacle.x + obstacle.width < 0:
                 rem.append(obstacle)
-
-
-
-
-
 
         score = 0
         if add_obstacle:
             score += 1
             increase_fitness = 5
+            r = random.randrange(0,2)
+            if r == 0:
+                obstacles.append(saw(810, 310, 64, 64))
+            else:
+                obstacles.append(spike(810, 0, 48, 310))
+            add_obstacle = False
             for g in ge:
                 g.fitness += increase_fitness
-                r = random.randrange(0,2)
-                if r == 0:
-                    obstacles.append(saw(810, 310, 64, 64))
-                elif r == 1:
-                    obstacles.append(spike(810, 0, 48, 310))
 
         for r in rem:
             obstacles.remove(r)
