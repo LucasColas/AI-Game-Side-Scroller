@@ -45,6 +45,7 @@ class player(object):
             win.blit(self.fall, (self.x, self.y + 30))
 
         elif self.jumping:
+            self.hitbox = (self.x+ 4,self.y,self.width-24,self.height-10)
             self.y -= self.jumpList[self.jumpCount] * 1.3
             win.blit(self.jump[self.jumpCount//18], (self.x,self.y))
             self.jumpCount += 1
@@ -52,7 +53,7 @@ class player(object):
                 self.jumpCount = 0
                 self.jumping = False
                 self.runCount = 0
-            self.hitbox = (self.x+ 4,self.y,self.width-24,self.height-10)
+                self.hitbox = (self.x+ 4,self.y,self.width-24,self.height-10)
         elif self.sliding or self.slideUp:
             if self.slideCount < 20:
                 self.y += 1
@@ -102,7 +103,9 @@ class saw(object):
         self.passed = False
         self.hitbox = (self.x + 10, self.y + 5, self.width - 20, self.height - 5)
 
+
     def draw(self,win):
+        self.hitbox = (self.x + 10, self.y + 5, self.width - 20, self.height - 5)
         #pygame.draw.rect(win, (255,0,0), self.hitbox, 2)
         if self.rotateCount >= 8:
             self.rotateCount = 0
@@ -127,6 +130,7 @@ class spike(saw):
 
         self.passed = False
     def draw(self,win):
+        self.hitbox = (self.x + 10, self.y + 5, self.width - 20, self.height - 5)
         #pygame.draw.rect(win, (255,0,0), self.hitbox, 2)
         win.blit(self.img, (self.x,self.y))
 
@@ -278,7 +282,7 @@ def main(genomes, config):
         for obstacle in obstacles:
             for runner in runners:
                 if obstacle.collide(runner.hitbox):
-                    #runner.falling = True
+                    runner.falling = True
                     ge[runners.index(runner)].fitness -= 1
                     runners.pop(runners.index(runner))
                     nets.pop(runners.index(runner))
