@@ -14,8 +14,8 @@ win = pygame.display.set_mode((W,H))
 pygame.display.set_caption('Side Scroller')
 
 bg = pygame.image.load(os.path.join('images','bg.png')).convert()
-bgX = 0
-bgX2 = bg.get_width()
+global bgX = 0
+global bgX2 = bg.get_width()
 
 clock = pygame.time.Clock()
 
@@ -231,10 +231,6 @@ def main(genomes, config):
 
     run = True
     while run:
-
-        bgX = 0
-        bgX2 = bg.get_width()
-
         bgX -= 1.4
         bgX2 -= 1.4
 
