@@ -210,7 +210,7 @@ speed = 30
 
 runner = player(200, 313, 64, 64)
 
-obstacles = []
+obstacles = [saw(810, 310, 64, 64)]
 pause = 0
 fallSpeed = 0
 
