@@ -14,8 +14,6 @@ win = pygame.display.set_mode((W,H))
 pygame.display.set_caption('Side Scroller')
 
 bg = pygame.image.load(os.path.join('images','bg.png')).convert()
-global bgX
-global bgX2
 
 bgX = 0
 bgX2 = bg.get_width()
