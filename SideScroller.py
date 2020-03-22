@@ -196,6 +196,9 @@ def redrawWindow():
     for obstacle in obstacles:
         obstacle.draw(win)
 
+    for runner in runners:
+        runner.draw(win)
+
     #win.blit(text, (700, 10))
     pygame.display.update()
 
