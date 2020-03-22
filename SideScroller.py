@@ -218,6 +218,9 @@ fallSpeed = 0
 
 def main(genomes, config):
 
+    global bgX
+    global bgX2
+
     nets = []
     ge = []
     runners = []
