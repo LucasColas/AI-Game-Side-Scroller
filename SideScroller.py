@@ -80,7 +80,7 @@ class player(object):
             self.runCount += 1
             self.hitbox = (self.x+ 4,self.y,self.width-24,self.height-13)
 
-        #pygame.draw.rect(win, (255,0,0),self.hitbox, 2)
+        pygame.draw.rect(win, (255,0,0),self.hitbox, 2)
 
     def get_distance(self, obstacles):
         for obstacle in obstacles:
