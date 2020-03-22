@@ -151,9 +151,7 @@ def updateFile():
         return score
 
     return last
-"""
 
-"""
 def endScreen():
     global pause, score, speed, obstacles
     pause = 0
@@ -192,7 +190,7 @@ def redrawWindow(runners):
     win.blit(bg, (bgX, 0))
     win.blit(bg, (bgX2,0))
     #text = largeFont.render('Score: ' + str(score), 1, (255,255,255))
-    runner.draw(win)
+    #runner.draw(win)
     for obstacle in obstacles:
         obstacle.draw(win)
 
@@ -206,15 +204,9 @@ def redrawWindow(runners):
 #pygame.time.set_timer(USEREVENT+1, 500)
 #pygame.time.set_timer(USEREVENT+2, 3000)
 speed = 30
-
-
-
-
-
 obstacles = [saw(810, 310, 64, 64)]
 pause = 0
 fallSpeed = 0
-
 
 
 def main(genomes, config):
@@ -286,12 +278,11 @@ def main(genomes, config):
         for obstacle in obstacles:
             for runner in runners:
                 if obstacle.collide(runner.hitbox):
-                    runner.falling = True
-                    ge[x].fitness -= 1
-                    runners.remove(runner)
-                    runners.pop(x)
-                    nets.pop(x)
-                    ge.pop(x)
+                    #runner.falling = True
+                    ge[runners.index(runner)].fitness -= 1
+                    runners.pop(runners.index(runner))
+                    nets.pop(runners.index(runner))
+                    ge.pop(runners.index(runner))
 
                     """
                     if pause == 0:
