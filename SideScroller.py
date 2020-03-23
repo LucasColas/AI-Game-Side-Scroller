@@ -231,7 +231,7 @@ def main(genomes, config):
 
 
     run = True
-    while run:
+    while run and len(runners) > 0:
         bgX -= 1.4
         bgX2 -= 1.4
 
