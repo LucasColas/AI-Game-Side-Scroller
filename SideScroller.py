@@ -189,7 +189,7 @@ def endScreen():
 
 runner = player(200, 313, 64, 64)
 
-def redrawWindow(runners):
+def redrawWindow(runners, obstacles):
     largeFont = pygame.font.SysFont('comicsans', 30)
     win.blit(bg, (bgX, 0))
     win.blit(bg, (bgX2,0))
@@ -338,7 +338,7 @@ def main(genomes, config):
                     runner.sliding = True
         """
 
-        redrawWindow(runners)
+        redrawWindow(runners, obstacles)
 
 def run(config_path):
     max_gen = 120
