@@ -208,7 +208,6 @@ def redrawWindow(runners, obstacles):
 #pygame.time.set_timer(USEREVENT+1, 500)
 #pygame.time.set_timer(USEREVENT+2, 3000)
 speed = 30
-obstacles = [saw(810, 310, 64, 64)]
 pause = 0
 fallSpeed = 0
 
@@ -221,6 +220,7 @@ def main(genomes, config):
     nets = []
     ge = []
     runners = []
+    obstacles = [saw(810, 310, 64, 64)]
 
     for _,g in genomes:
         net = neat.nn.FeedForwardNetwork.create(g, config)
