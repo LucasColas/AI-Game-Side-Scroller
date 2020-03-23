@@ -260,19 +260,18 @@ def main(genomes, config):
 
         for x, runner in enumerate(runners):
             #runner.draw()
-            ge[x].fitness += 0.1
+            ge[x].fitness += 0.005
 
-            for i, g in enumerate(ge):
-                inputs = (runner.get_distance(obstacles))
-                outputs = nets[i].activate(inputs)
+            inputs = (runner.get_distance(obstacles))
+            outputs = nets[x].activate(inputs)
 
-                if outputs[0] > 0.5:
-                    if not(runner.sliding):
-                        runner.sliding = True
+            if outputs[0] > 0.5:
+                if not(runner.sliding):
+                    runner.sliding = True
 
-                elif outputs[1] < 0.5 and runner.y == 313:
-                    if not(runner.jumping):
-                        runner.jumping = True
+            elif outputs[1] > 0.5 and round(runner.y) == 314:
+                if not(runner.jumping):
+                    runner.jumping = True
 
         add_obstacle = False
 
