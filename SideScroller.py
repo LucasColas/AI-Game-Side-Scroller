@@ -221,8 +221,6 @@ def main(genomes, config):
     nets = []
     ge = []
     runners = []
-    saws = []
-    spikes = []
 
     for _,g in genomes:
         net = neat.nn.FeedForwardNetwork.create(g, config)
