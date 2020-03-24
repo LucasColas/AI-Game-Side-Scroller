@@ -272,6 +272,10 @@ def main(genomes, config):
             elif outputs[1] > 0.5 and round(runner.y) == 313:
                 if not(runner.jumping):
                     runner.jumping = True
+            """
+            if round(runner.y) == 313:
+                runner.jumping = True
+            """
 
         add_obstacle = False
 
