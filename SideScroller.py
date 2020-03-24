@@ -269,7 +269,7 @@ def main(genomes, config):
                 if not(runner.sliding):
                     runner.sliding = True
 
-            elif outputs[1] > 0.5 and round(runner.y) == 314:
+            elif outputs[1] > 0.5 and round(runner.y) == 313:
                 if not(runner.jumping):
                     runner.jumping = True
 
