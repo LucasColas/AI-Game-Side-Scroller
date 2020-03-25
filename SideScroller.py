@@ -22,6 +22,8 @@ clock = pygame.time.Clock()
 
 Stat_Font = pygame.font.SysFont("comicsans", 20)
 
+gen = 0
+
 class player(object):
     run = [pygame.image.load(os.path.join('images', str(x) + '.png')) for x in range(8,16)]
     jump = [pygame.image.load(os.path.join('images', str(x) + '.png')) for x in range(1,8)]
@@ -237,7 +239,7 @@ def main(genomes, config):
     global gen
 
 
-    gen++
+    gen+= 1
 
     nets = []
     ge = []
@@ -257,7 +259,6 @@ def main(genomes, config):
     score = 0
 
     while run and len(runners) > 0:
-        gen += 1
         bgX -= 1.4
         bgX2 -= 1.4
 
