@@ -236,7 +236,8 @@ def main(genomes, config):
     global bgX2
     global gen
 
-    gen += 1
+
+    gen++
 
     nets = []
     ge = []
