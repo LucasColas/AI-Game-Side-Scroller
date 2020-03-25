@@ -126,12 +126,12 @@ class spike(saw):
         self.x = x
         self.width = width
         self.height = height
-        self.hitbox = (self.x + 10, self.y + 5, self.width - 20, self.height - 5)
+        self.hitbox = (self.x + 10, self.y, 28,315)
 
         self.passed = False
     def draw(self,win):
-        self.hitbox = (self.x + 10, self.y + 5, self.width - 20, self.height - 5)
-        #pygame.draw.rect(win, (255,0,0), self.hitbox, 2)
+        self.hitbox = (self.x + 10, self.y, 28,315)
+        pygame.draw.rect(win, (255,0,0), self.hitbox, 2)
         win.blit(self.img, (self.x,self.y))
 
     def collide(self, rect):
