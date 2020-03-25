@@ -216,6 +216,9 @@ def redrawWindow(runners, obstacles, score, gen):
     gen_text = Stat_Font.render("Gen : " + str(gen), 1, white)
     win.blit(gen_text, (W - 15 - gen_text.get_width(), 10))
 
+    alive_text = Stat_Font.render("Alive : " + str(runners), 1, white)
+    win.blit(alive_text, (W - 20 - alive_text.get_width(), 10))
+
     pygame.display.update()
 
 
@@ -246,6 +249,7 @@ def main(genomes, config):
         runners.append(player(200, 313, 64, 64))
         g.fitness = 0
         ge.append(g)
+
 
 
     run = True
