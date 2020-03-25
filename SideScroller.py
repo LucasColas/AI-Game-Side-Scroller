@@ -8,7 +8,7 @@ import visualize
 import neat
 
 #Initialize
-pygame.init()
+pygame.font.init()
 W, H = 800, 437
 win = pygame.display.set_mode((W,H))
 pygame.display.set_caption('Side Scroller')
@@ -19,6 +19,8 @@ bgX = 0
 bgX2 = bg.get_width()
 
 clock = pygame.time.Clock()
+
+Stat_Font = pygame.font.SysFont("comicsans", 50)
 
 class player(object):
     run = [pygame.image.load(os.path.join('images', str(x) + '.png')) for x in range(8,16)]
@@ -190,7 +192,7 @@ def endScreen():
 
 runner = player(200, 313, 64, 64)
 
-def redrawWindow(runners, obstacles):
+def redrawWindow(runners, obstacles, score):
     largeFont = pygame.font.SysFont('comicsans', 30)
     win.blit(bg, (bgX, 0))
     win.blit(bg, (bgX2,0))
@@ -203,6 +205,8 @@ def redrawWindow(runners, obstacles):
         runner.draw(win)
 
     #win.blit(text, (700, 10))
+    text = Stat_Font.render("Score : " + str(score), 1, (255, 255, 255))
+	win.blit(text, (WIN_WIDTH - 10 - text.get_width(), 10))
     pygame.display.update()
 
 
