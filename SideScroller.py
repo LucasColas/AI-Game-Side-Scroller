@@ -192,7 +192,7 @@ def endScreen():
 
 runner = player(200, 313, 64, 64)
 
-def redrawWindow(runners, obstacles, score, gen, individuals):
+def redrawWindow(runners, obstacles, score):
     largeFont = pygame.font.SysFont('comicsans', 30)
     win.blit(bg, (bgX, 0))
     win.blit(bg, (bgX2,0))
@@ -205,10 +205,11 @@ def redrawWindow(runners, obstacles, score, gen, individuals):
         runner.draw(win)
 
     #win.blit(text, (700, 10))
-    text_score = Stat_Font.render("Score : " + str(score), 1, (255, 255, 255))
-	win.blit(text, (W - 10 - text_score.get_width(), 10))
-    pygame.display.update()
+    white = (255, 255, 255)
+    score_text = Stat_Font.render("Score : " + str(score), 1, white)
+    win.blit(score_text, (W - 10 - score_text.get_width(), 10))
 
+    pygame.display.update()
 
 #pygame.time.set_timer(USEREVENT+1, 500)
 #pygame.time.set_timer(USEREVENT+2, 3000)
