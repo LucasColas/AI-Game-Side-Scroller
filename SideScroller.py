@@ -362,7 +362,7 @@ def main(genomes, config):
                     runner.sliding = True
         """
 
-        redrawWindow(runners, obstacles, score)
+        redrawWindow(runners, obstacles, score, gen)
 
 def run(config_path):
     max_gen = 120
