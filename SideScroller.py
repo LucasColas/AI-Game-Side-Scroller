@@ -20,7 +20,7 @@ bgX2 = bg.get_width()
 
 clock = pygame.time.Clock()
 
-Stat_Font = pygame.font.SysFont("comicsans", 50)
+Stat_Font = pygame.font.SysFont("comicsans", 20)
 
 class player(object):
     run = [pygame.image.load(os.path.join('images', str(x) + '.png')) for x in range(8,16)]
@@ -124,6 +124,7 @@ class saw(object):
 class spike(saw):
     picture = pygame.image.load(os.path.join('images', 'spike.png'))
     img = pygame.transform.scale(picture, (48, 330))
+
     def __init__(self, x, y, width, height):
         self.y = y
         self.x = x
@@ -192,7 +193,7 @@ def endScreen():
 
 runner = player(200, 313, 64, 64)
 
-def redrawWindow(runners, obstacles, score):
+def redrawWindow(runners, obstacles, score, gen):
     largeFont = pygame.font.SysFont('comicsans', 30)
     win.blit(bg, (bgX, 0))
     win.blit(bg, (bgX2,0))
@@ -209,11 +210,19 @@ def redrawWindow(runners, obstacles, score):
     score_text = Stat_Font.render("Score : " + str(score), 1, white)
     win.blit(score_text, (W - 10 - score_text.get_width(), 10))
 
+    if gen == 0:
+        gen = 1
+
+    gen_text = Stat_Font.render("Gen : " + str(gen), 1, white)
+    win.blit(gen_text, (W - 15 - gen_text.get_width(), 10))
+
     pygame.display.update()
+
 
 #pygame.time.set_timer(USEREVENT+1, 500)
 #pygame.time.set_timer(USEREVENT+2, 3000)
 speed = 30
+obstacles = [saw(810, 310, 64, 64)]
 pause = 0
 fallSpeed = 0
 
@@ -222,6 +231,9 @@ def main(genomes, config):
 
     global bgX
     global bgX2
+    global gen
+
+    gen += 1
 
     nets = []
     ge = []
@@ -237,7 +249,10 @@ def main(genomes, config):
 
 
     run = True
+    score = 0
+
     while run and len(runners) > 0:
+        gen += 1
         bgX -= 1.4
         bgX2 -= 1.4
 
@@ -261,7 +276,6 @@ def main(genomes, config):
         clock.tick(80)
 
         #score = speed//10 - 3
-
 
 
         for x, runner in enumerate(runners):
@@ -305,13 +319,13 @@ def main(genomes, config):
             else:
                 obstacle.x -= 1.4
             if obstacle.x < runner.x and len(obstacles) == 1:
+                score += 1
                 add_obstacle = True
             if obstacle.x + obstacle.width < 0:
                 rem.append(obstacle)
 
-        score = 0
+
         if add_obstacle:
-            score += 1
             increase_fitness = 5
             r = random.randrange(0,2)
             if r == 0:
@@ -348,7 +362,7 @@ def main(genomes, config):
                     runner.sliding = True
         """
 
-        redrawWindow(runners, obstacles)
+        redrawWindow(runners, obstacles, score)
 
 def run(config_path):
     max_gen = 120
