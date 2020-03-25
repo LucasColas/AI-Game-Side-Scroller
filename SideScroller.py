@@ -252,7 +252,7 @@ def main(genomes, config):
             if pause > fallSpeed * 2:
                 endScreen()
         """
-        clock.tick(30)
+        clock.tick(80)
 
         #score = speed//10 - 3
 
