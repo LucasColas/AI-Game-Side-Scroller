@@ -120,7 +120,8 @@ class saw(object):
 
 
 class spike(saw):
-    img = pygame.image.load(os.path.join('images', 'spike.png'))
+    picture = pygame.image.load(os.path.join('images', 'spike.png'))
+    img = pygame.transform.scale(picture, (48, 330))
     def __init__(self, x, y, width, height):
         self.y = y
         self.x = x
