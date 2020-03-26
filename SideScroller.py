@@ -310,7 +310,7 @@ def main(genomes, config):
             for runner in runners:
                 if obstacle.collide(runner.hitbox):
                     runner.falling = True
-                    ge[runners.index(runner)].fitness -= 1
+                    ge[runners.index(runner)].fitness -= 3
                     nets.pop(runners.index(runner))
                     ge.pop(runners.index(runner))
                     runners.pop(runners.index(runner))
