@@ -218,7 +218,7 @@ def redrawWindow(runners, obstacles, score, gen):
     gen_text = Stat_Font.render("Gen : " + str(gen), 1, white)
     win.blit(gen_text, (W - 15 - gen_text.get_width(), 10))
 
-    alive_text = Stat_Font.render("Alive : " + str(runners), 1, white)
+    alive_text = Stat_Font.render("Alive : " + str(len(runners)), 1, white)
     win.blit(alive_text, (W - 20 - alive_text.get_width(), 10))
 
     pygame.display.update()
