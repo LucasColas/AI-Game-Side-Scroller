@@ -286,7 +286,7 @@ def main(genomes, config):
 
         for x, runner in enumerate(runners):
             #runner.draw()
-            ge[x].fitness += 0.005
+            ge[x].fitness += 0.1
 
             inputs = (runner.get_distance(obstacles))
             outputs = nets[x].activate(inputs)
