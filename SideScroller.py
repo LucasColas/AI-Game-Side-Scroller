@@ -327,6 +327,8 @@ def main(genomes, config):
             if obstacle.x < runner.x and len(obstacles) == 1:
                 score += 1
                 add_obstacle = True
+                for g in ge:
+                    g.fitness += 2
             if obstacle.x + obstacle.width < 0:
                 rem.append(obstacle)
 
