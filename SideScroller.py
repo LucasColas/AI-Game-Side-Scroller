@@ -303,7 +303,7 @@ def run(config_path):
     stats = neat.StatisticsReporter()
     p.add_reporter(stats)
 
-    # Run up for max_gen's values generations
+    # Run up for max_gen's value generations
     winner = p.run(main, max_gen)
 
 if __name__ == "__main__":
