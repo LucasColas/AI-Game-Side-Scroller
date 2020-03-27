@@ -258,11 +258,6 @@ def main(genomes, config):
                     ge.pop(runners.index(runner))
                     runners.pop(runners.index(runner))
 
-                    """
-                    if pause == 0:
-                        pause = 1
-                        fallSpeed = speed
-                    """
             if obstacle.x < -64:
                 obstacles.pop(obstacles.index(obstacle))
             else:
@@ -289,29 +284,6 @@ def main(genomes, config):
 
         for r in rem:
             obstacles.remove(r)
-
-        """
-            if event.type == USEREVENT+1:
-                speed += 1
-
-            if event.type == USEREVENT+2:
-                r = random.randrange(0,2)
-                if r == 0:
-                    obstacles.append(saw(810, 310, 64, 64))
-                elif r == 1:
-                    obstacles.append(spike(810, 0, 48, 310))
-
-        if runner.falling == False:
-            keys = pygame.key.get_pressed()
-
-            if keys[pygame.K_SPACE] or keys[pygame.K_UP]:
-                if not(runner.jumping):
-                    runner.jumping = True
-
-            if keys[pygame.K_DOWN]:
-                if not(runner.sliding):
-                    runner.sliding = True
-        """
 
         redrawWindow(runners, obstacles, score, gen)
 
