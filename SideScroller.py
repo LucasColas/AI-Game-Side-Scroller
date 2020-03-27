@@ -92,6 +92,8 @@ class player(object):
             if obstacle.x > self.x:
                 return [obstacle.x, obstacle.y]
 
+
+
 class saw(object):
     rotate = [pygame.image.load(os.path.join('images', 'SAW0.PNG')),
     pygame.image.load(os.path.join('images', 'SAW1.PNG')),
@@ -133,6 +135,7 @@ class spike(saw):
         self.width = width
         self.height = height
         self.hitbox = (self.x + 10, self.y, 28,315)
+        self.passed = False
 
         self.passed = False
     def draw(self,win):
@@ -145,7 +148,6 @@ class spike(saw):
             if rect[1] < self.hitbox[3]:
                 return True
         return False
-
 
 
 runner = player(200, 313, 64, 64)
@@ -187,14 +189,14 @@ pause = 0
 fallSpeed = 0
 
 
+
 def main(genomes, config):
 
     global bgX
     global bgX2
     global gen
 
-
-    gen+= 1
+    gen += 1
 
     nets = []
     ge = []
@@ -207,7 +209,6 @@ def main(genomes, config):
         runners.append(player(200, 313, 64, 64))
         g.fitness = 0
         ge.append(g)
-
 
 
     run = True
@@ -228,7 +229,7 @@ def main(genomes, config):
                 pygame.quit()
                 quit()
 
-        clock.tick(80)
+        clock.tick(120)
 
         #score = speed//10 - 3
 
@@ -246,6 +247,8 @@ def main(genomes, config):
 
             elif outputs[1] > 0.3 and not(runner.jumping):
                     runner.jumping = True
+
+
         add_obstacle = False
 
         rem = []
@@ -262,8 +265,8 @@ def main(genomes, config):
                 obstacles.pop(obstacles.index(obstacle))
             else:
                 obstacle.x -= 1.4
-            if obstacle.x < runner.x and len(obstacles) == 1:
-                score += 1
+            if obstacle.x < runner.x and not obstacle.passed:
+                obstacle.passed = True
                 add_obstacle = True
                 for g in ge:
                     g.fitness += 2
@@ -272,6 +275,7 @@ def main(genomes, config):
 
 
         if add_obstacle:
+            score += 1
             increase_fitness = 5
             r = random.randrange(0,3)
             if r == 0:
@@ -282,8 +286,8 @@ def main(genomes, config):
                 obstacles.append(spike(810, 0, 48, 310))
                 obstacles.append(saw(1200, 310, 64, 64))
             elif r == 2:
-                obstacles.append(spike(810, -80, 48, 310))
-                obstacles.append(saw(810, 310, 64, 64))
+                obstacles.append(spike(950, 0, 48, 310))
+                #obstacles.append(saw(810, 310, 64, 64))
             add_obstacle = False
             for g in ge:
                 g.fitness += increase_fitness
