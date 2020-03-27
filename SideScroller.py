@@ -281,7 +281,7 @@ def main(genomes, config):
             if r = 1:
                 obstacles.append(spike(810, 0, 48, 310))
                 obstacles.append(saw(1200, 310, 64, 64))
-            if r = 2:
+            elif r = 2:
                 obstacles.append(spike(810, -80, 48, 310))
                 obstacles.append(saw(810, 310, 64, 64))
             add_obstacle = False
