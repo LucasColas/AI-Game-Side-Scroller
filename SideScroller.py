@@ -276,8 +276,11 @@ def main(genomes, config):
             r = random.randrange(0,2)
             if r == 0:
                 obstacles.append(saw(810, 310, 64, 64))
+                obstacles.append(spike(1200, 0, 48, 310))
+
             else:
                 obstacles.append(spike(810, 0, 48, 310))
+                obstacles.append(saw(1200, 310, 64, 64))
             add_obstacle = False
             for g in ge:
                 g.fitness += increase_fitness
