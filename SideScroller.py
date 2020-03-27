@@ -244,8 +244,7 @@ def main(genomes, config):
                 if not(runner.sliding):
                     runner.sliding = True
 
-            elif outputs[1] > 0.3 and round(runner.y) == 313:
-                if not(runner.jumping):
+            elif outputs[1] > 0.3 and not(runner.jumping):
                     runner.jumping = True
         add_obstacle = False
 
