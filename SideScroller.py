@@ -152,7 +152,7 @@ class spike(saw):
 
 runner = player(200, 313, 64, 64)
 
-def redrawWindow(runners, obstacles, score, gen):
+def redrawWindow(runners, obstacles, score, gen, x_obs, y_obs):
     largeFont = pygame.font.SysFont('comicsans', 30)
     win.blit(bg, (bgX, 0))
     win.blit(bg, (bgX2,0))
@@ -177,6 +177,8 @@ def redrawWindow(runners, obstacles, score, gen):
 
     alive_text = Stat_Font.render("Alive : " + str(len(runners)), 1, white)
     win.blit(alive_text, (W - 10 - alive_text.get_width(), 70))
+
+    pygame.draw.circle(win, (255, 0, 0), (round(x_obs), round(y_obs)), 4)
 
     pygame.display.update()
 
@@ -241,6 +243,9 @@ def main(genomes, config):
             inputs = (runner.get_distance(obstacles))
             outputs = nets[x].activate(inputs)
 
+            x_obs = inputs[0]
+            y_obs= inputs[1]
+
             if outputs[0] > 0.5:
                 if not(runner.sliding):
                     runner.sliding = True
@@ -295,7 +300,7 @@ def main(genomes, config):
         for r in rem:
             obstacles.remove(r)
 
-        redrawWindow(runners, obstacles, score, gen)
+        redrawWindow(runners, obstacles, score, gen, x_obs, y_obs)
 
 def run(config_path):
     max_gen = 120
