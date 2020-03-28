@@ -284,9 +284,8 @@ def main(genomes, config):
                 #obstacles.append(saw(810, 310, 64, 64))
             for x,obstacle_1 in obstacles:
                 for y, obstacle_2 in obstacles:
-                    if math.sqrt((obstacles[x].x - obstacles[y].x)**2 +
-                    (obstacles[x].y - obstacles[y].y)**2) and obstacles[x] != obstacles[y]
-                    obstacles.remove(x)
+                    if math.sqrt((obstacles[x].x - obstacles[y].x)**2 + (obstacles[x].y - obstacles[y].y)**2) and obstacles[x] != obstacles[y] :
+                        obstacles.remove(x)
             add_obstacle = False
             for g in ge:
                 g.fitness += increase_fitness
