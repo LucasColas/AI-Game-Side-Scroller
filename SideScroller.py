@@ -182,7 +182,6 @@ def redrawWindow(runners, obstacles, score, gen, x_obs, y_obs):
 
     pygame.display.update()
 
-obstacles = [saw(810, 310, 64, 64)]
 
 def main(genomes, config):
 
