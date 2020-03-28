@@ -156,15 +156,13 @@ def redrawWindow(runners, obstacles, score, gen, x_obs, y_obs):
     largeFont = pygame.font.SysFont('comicsans', 30)
     win.blit(bg, (bgX, 0))
     win.blit(bg, (bgX2,0))
-    #text = largeFont.render('Score: ' + str(score), 1, (255,255,255))
-    #runner.draw(win)
+
     for obstacle in obstacles:
         obstacle.draw(win)
 
     for runner in runners:
         runner.draw(win)
 
-    #win.blit(text, (700, 10))
     white = (255, 255, 255)
     score_text = Stat_Font.render("Score : " + str(score), 1, white)
     win.blit(score_text, (W - 10 - score_text.get_width(), 10))
@@ -223,8 +221,6 @@ def main(genomes, config):
                 quit()
 
         clock.tick(120)
-
-
 
         x_obs = 0
         y_obs = 0
