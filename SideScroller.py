@@ -282,9 +282,9 @@ def main(genomes, config):
             elif r == 2:
                 obstacles.append(spike(950, 0, 48, 310))
                 #obstacles.append(saw(810, 310, 64, 64))
-            for x,obstacle_1 in obstacles:
-                for y, obstacle_2 in obstacles:
-                    if math.sqrt((obstacles[x].x - obstacles[y].x)**2 + (obstacles[x].y - obstacles[y].y)**2) > 150 and obstacles[x] != obstacles[y] :
+            for x in obstacles:
+                for y in obstacles:
+                    if math.sqrt((x.x - y.x)**2 + (x.y - y.y)**2) > 150 and x != y :
                         obstacles.remove(x)
             add_obstacle = False
             for g in ge:
