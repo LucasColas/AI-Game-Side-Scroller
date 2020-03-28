@@ -235,6 +235,8 @@ def main(genomes, config):
 
         #score = speed//10 - 3
 
+        x_obs = 0
+        y_obs = 0
 
         for x, runner in enumerate(runners):
             #runner.draw()
