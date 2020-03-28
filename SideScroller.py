@@ -182,15 +182,7 @@ def redrawWindow(runners, obstacles, score, gen, x_obs, y_obs):
 
     pygame.display.update()
 
-
-#pygame.time.set_timer(USEREVENT+1, 500)
-#pygame.time.set_timer(USEREVENT+2, 3000)
-speed = 30
 obstacles = [saw(810, 310, 64, 64)]
-pause = 0
-fallSpeed = 0
-
-
 
 def main(genomes, config):
 
@@ -233,7 +225,7 @@ def main(genomes, config):
 
         clock.tick(120)
 
-        #score = speed//10 - 3
+
 
         x_obs = 0
         y_obs = 0
