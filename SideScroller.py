@@ -176,7 +176,9 @@ def redrawWindow(runners, obstacles, score, gen, x_obs, y_obs):
     alive_text = Stat_Font.render("Alive : " + str(len(runners)), 1, white)
     win.blit(alive_text, (W - 10 - alive_text.get_width(), 70))
 
-    pygame.draw.circle(win, (255, 0, 0), (round(x_obs), round(y_obs)), 4)
+    #pygame.draw.circle(win, (255, 0, 0), (round(x_obs), round(y_obs)), 4)
+
+    #pygame.draw.line(win, (255, 0,0), (0,10), (150,10), 2) To see what it represents a distance of 150
 
     pygame.display.update()
 
