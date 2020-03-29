@@ -282,8 +282,8 @@ def main(genomes, config):
                 obstacles.append(spike(810, 0, 48, 310))
                 obstacles.append(saw(1200, 310, 64, 64))
             elif r == 2:
-                obstacles.append(spike(950, 0, 48, 310))
-                #obstacles.append(saw(810, 310, 64, 64))
+                obstacles.append(spike(970, 0, 48, 310))
+                obstacles.append(saw(1360, 310, 64, 64))
             for x in obstacles:
                 for y in obstacles:
                     if math.sqrt((x.x - y.x)**2) < 150 and x != y :
