@@ -284,7 +284,7 @@ def main(genomes, config):
                 #obstacles.append(saw(810, 310, 64, 64))
             for x in obstacles:
                 for y in obstacles:
-                    if math.sqrt((x.x - y.x)**2) > 150 and x != y :
+                    if math.sqrt((x.x - y.x)**2) < 150 and x != y :
                         obstacles.remove(x)
             add_obstacle = False
             for g in ge:
