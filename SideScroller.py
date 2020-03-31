@@ -235,7 +235,7 @@ def main(genomes, config):
             #runner.draw()
             ge[x].fitness += 0.1
 
-            inputs = (runner.x, get_x_distance(obstacles), get_y_distance(obstacles))
+            inputs = (runner.x, runner.get_x_distance(obstacles), runner.get_y_distance(obstacles))
             outputs = nets[x].activate(inputs)
 
             x_obs = inputs[1]
