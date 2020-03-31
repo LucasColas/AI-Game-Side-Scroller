@@ -11,7 +11,7 @@ import neat
 pygame.font.init()
 W, H = 800, 437
 win = pygame.display.set_mode((W,H))
-pygame.display.set_caption('Side Scroller')
+pygame.display.set_caption('AI Side Scroller')
 
 bg = pygame.image.load(os.path.join('images','bg.png')).convert()
 
