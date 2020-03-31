@@ -87,10 +87,14 @@ class player(object):
 
         #pygame.draw.rect(win, (255,0,0),self.hitbox, 2)
 
-    def get_distance(self, obstacles):
+    def get_x_distance(self, obstacles):
         for obstacle in obstacles:
             if obstacle.x > self.x:
-                return [obstacle.x, obstacle.y]
+                return obstacle.x
+    def get_y_distance(self, obstacles):
+        for obstacles in obstacles:
+            if obstacle.x > self.x:
+                return obstacle.y
 
 
 
