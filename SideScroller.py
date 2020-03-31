@@ -238,8 +238,8 @@ def main(genomes, config):
             inputs = (runner.x, get_x_distance(obstacles), get_y_distance(obstacles))
             outputs = nets[x].activate(inputs)
 
-            x_obs = inputs[0]
-            y_obs= inputs[1]
+            x_obs = inputs[1]
+            y_obs= inputs[2]
 
             if outputs[0] > 0.5:
                 if not(runner.sliding):
