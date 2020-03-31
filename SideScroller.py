@@ -92,7 +92,7 @@ class player(object):
             if obstacle.x > self.x:
                 return obstacle.x
     def get_y_distance(self, obstacles):
-        for obstacles in obstacles:
+        for obstacle in obstacles:
             if obstacle.x > self.x:
                 return obstacle.y
 
