@@ -87,14 +87,11 @@ class player(object):
 
         #pygame.draw.rect(win, (255,0,0),self.hitbox, 2)
 
-    def get_x_distance(self, obstacles):
+    def get_distance(self, obstacles):
         for obstacle in obstacles:
             if obstacle.x > self.x:
-                return obstacle.x
-    def get_y_distance(self, obstacles):
-        for obstacle in obstacles:
-            if obstacle.x > self.x:
-                return obstacle.y
+                return [obstacle.x, obstacle.y]
+
 
 
 
@@ -235,11 +232,11 @@ def main(genomes, config):
             #runner.draw()
             ge[x].fitness += 0.1
 
-            inputs = (runner.x, runner.get_x_distance(obstacles), runner.get_y_distance(obstacles))
+            inputs = (runner.get_distance(obstacles))
             outputs = nets[x].activate(inputs)
 
-            x_obs = inputs[1]
-            y_obs= inputs[2]
+            x_obs = inputs[0]
+            y_obs= inputs[1]
 
             if outputs[0] > 0.5:
                 if not(runner.sliding):
