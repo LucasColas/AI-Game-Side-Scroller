@@ -7,6 +7,7 @@ import random
 import neat
 
 #Initialize
+pygame.init()
 pygame.font.init()
 W, H = 800, 437
 win = pygame.display.set_mode((W,H))
@@ -313,5 +314,5 @@ def run(config_path):
 if __name__ == "__main__":
 
     local_dir = os.path.dirname(__file__)
-    config_path = os.path.join(local_dir, "NeatConfigSideScroller.txt")
+    config_path = os.path.join(local_dir, "NeatConfig.txt")
     run(config_path)
