@@ -253,7 +253,7 @@ def main(genomes, config):
             for runner in runners:
                 if obstacle.collide(runner.hitbox):
                     runner.falling = True
-                    ge[runners.index(runner)].fitness -= 5
+                    ge[runners.index(runner)].fitness -= 35
                     nets.pop(runners.index(runner))
                     ge.pop(runners.index(runner))
                     runners.pop(runners.index(runner))
@@ -266,28 +266,28 @@ def main(genomes, config):
                 obstacle.passed = True
                 add_obstacle = True
                 for g in ge:
-                    g.fitness += 2
+                    g.fitness += 10
             if obstacle.x + obstacle.width < 0:
                 rem.append(obstacle)
 
 
         if add_obstacle:
             score += 1
-            increase_fitness = 5
+            increase_fitness = 15
             r = random.randrange(0,3)
             if r == 0:
                 obstacles.append(saw(810, 310, 64, 64))
-                obstacles.append(spike(1200, 0, 48, 310))
+                obstacles.append(spike(1250, 0, 48, 310))
 
             if r == 1:
                 obstacles.append(spike(810, 0, 48, 310))
-                obstacles.append(saw(1200, 310, 64, 64))
+                obstacles.append(saw(1250, 310, 64, 64))
             elif r == 2:
-                obstacles.append(spike(970, 0, 48, 310))
-                obstacles.append(saw(1360, 310, 64, 64))
+                obstacles.append(spike(1010, 0, 48, 310))
+                obstacles.append(saw(1250, 310, 64, 64))
             for x in obstacles:
                 for y in obstacles:
-                    if math.sqrt((x.x - y.x)**2) < 150 and x != y :
+                    if math.sqrt((x.x - y.x)**2) < 200 and x != y :
                         obstacles.remove(x)
             add_obstacle = False
             for g in ge:
