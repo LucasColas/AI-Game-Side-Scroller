@@ -275,28 +275,21 @@ def main(genomes, config):
             score += 1
             increase_fitness = 15
             r = random.randrange(0,3)
-            if r == 0:
-                for x in obstacles:
-                    for y in obstacles:
-                        if math.sqrt((x.x - y.x)**2) > 200 and x != y :
-                            #obstacles.remove(x)
-                            obstacles.append(saw(810, 310, 64, 64))
-                            obstacles.append(spike(1250, 0, 48, 310))
+            for x in obstacles:
+                for y in obstacles:
+                    if math.sqrt((x.x - y.x)**2) < 200 and x != y :
+                        break
+                    elif r == 0:
+                        obstacles.append(saw(810, 310, 64, 64))
+                        obstacles.append(spike(1250, 0, 48, 310))
 
-            if r == 1:
-                for x in obstacles:
-                    for y in obstacles:
-                        if math.sqrt((x.x - y.x)**2) > 200 and x != y :
-                            #obstacles.remove(x)
-                            obstacles.append(spike(810, 0, 48, 310))
-                            obstacles.append(saw(1250, 310, 64, 64))
-            elif r == 2:
-                for x in obstacles:
-                    for y in obstacles:
-                        if math.sqrt((x.x - y.x)**2) > 200 and x != y :
-                            obstacles.remove(x)
-                            obstacles.append(spike(1010, 0, 48, 310))
-                            obstacles.append(saw(1250, 310, 64, 64))
+                    elif r == 1:
+                        obstacles.append(spike(810, 0, 48, 310))
+                        obstacles.append(saw(1250, 310, 64, 64))
+                    elif r == 2:
+                        obstacles.append(spike(1010, 0, 48, 310))
+                        obstacles.append(saw(1250, 310, 64, 64))
+
             add_obstacle = False
             for g in ge:
                 g.fitness += increase_fitness
