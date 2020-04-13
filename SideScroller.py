@@ -177,7 +177,10 @@ def redrawWindow(runners, obstacles, score, gen, x_obs, y_obs):
     alive_text = Stat_Font.render("Alive : " + str(len(runners)), 1, white)
     win.blit(alive_text, (W - 10 - alive_text.get_width(), 70))
 
-    pygame.draw.circle(win, (255, 0, 0), (round(x_obs), round(y_obs)), 8)
+    if len(runners) > 0:
+        for runner in runners:
+
+            pygame.draw.lin(win, (255, 0, 0), (runners.x, runners.y), round(y_obs)), 2)
     #pygame.draw.line(win, (255, 0,0), (0,10), (150,10), 2)
 
     pygame.display.update()
