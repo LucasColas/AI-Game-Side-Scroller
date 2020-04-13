@@ -177,9 +177,8 @@ def redrawWindow(runners, obstacles, score, gen, x_obs, y_obs):
     alive_text = Stat_Font.render("Alive : " + str(len(runners)), 1, white)
     win.blit(alive_text, (W - 10 - alive_text.get_width(), 70))
 
-    #pygame.draw.circle(win, (255, 0, 0), (round(x_obs), round(y_obs)), 4)
-
-    #pygame.draw.line(win, (255, 0,0), (0,10), (150,10), 2) To see what it represents a distance of 150
+    pygame.draw.circle(win, (255, 0, 0), (round(x_obs), round(y_obs)), 8)
+    #pygame.draw.line(win, (255, 0,0), (0,10), (150,10), 2)
 
     pygame.display.update()
 
@@ -275,21 +274,20 @@ def main(genomes, config):
             score += 1
             increase_fitness = 15
             r = random.randrange(0,3)
+            if r == 0:
+                obstacles.append(saw(810, 310, 64, 64))
+                obstacles.append(spike(1250, 0, 48, 310))
+
+            if r == 1:
+                obstacles.append(spike(810, 0, 48, 310))
+                obstacles.append(saw(1250, 310, 64, 64))
+            elif r == 2:
+                obstacles.append(spike(1010, 0, 48, 310))
+                obstacles.append(saw(1450, 310, 64, 64))
             for x in obstacles:
                 for y in obstacles:
                     if math.sqrt((x.x - y.x)**2) < 200 and x != y :
-                        break
-                    elif r == 0:
-                        obstacles.append(saw(810, 310, 64, 64))
-                        obstacles.append(spike(1250, 0, 48, 310))
-
-                    elif r == 1:
-                        obstacles.append(spike(810, 0, 48, 310))
-                        obstacles.append(saw(1250, 310, 64, 64))
-                    elif r == 2:
-                        obstacles.append(spike(1010, 0, 48, 310))
-                        obstacles.append(saw(1250, 310, 64, 64))
-
+                        obstacles.remove(y)
             add_obstacle = False
             for g in ge:
                 g.fitness += increase_fitness
