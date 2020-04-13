@@ -180,7 +180,7 @@ def redrawWindow(runners, obstacles, score, gen, x_obs, y_obs):
     if len(runners) > 0:
         for runner in runners:
 
-            pygame.draw.lin(win, (255, 0, 0), (runners.x, runners.y), round(y_obs)), 2)
+            pygame.draw.line(win, (255, 0, 0), (runners.x, runners.y), round(y_obs)), 2)
     #pygame.draw.line(win, (255, 0,0), (0,10), (150,10), 2)
 
     pygame.display.update()
@@ -255,7 +255,7 @@ def main(genomes, config):
             for runner in runners:
                 if obstacle.collide(runner.hitbox):
                     runner.falling = True
-                    ge[runners.index(runner)].fitness -= 35
+                    ge[runners.index(runner)].fitness -= 75
                     nets.pop(runners.index(runner))
                     ge.pop(runners.index(runner))
                     runners.pop(runners.index(runner))
@@ -268,14 +268,14 @@ def main(genomes, config):
                 obstacle.passed = True
                 add_obstacle = True
                 for g in ge:
-                    g.fitness += 10
+                    g.fitness += 15
             if obstacle.x + obstacle.width < 0:
                 rem.append(obstacle)
 
 
         if add_obstacle:
             score += 1
-            increase_fitness = 15
+            increase_fitness = 20
             r = random.randrange(0,2)
             if r == 0:
                 obstacles.append(saw(810, 310, 64, 64))
