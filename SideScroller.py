@@ -288,12 +288,7 @@ def main(genomes, config):
             if r == 1:
                 obstacles.append(spike(810, 0, 48, 310))
 
-            rr = random.randrange(0,2)
-            if rr == 0:
-                obstacles.append(spike(1100, 0, 48, 310))
-
-            if rr == 1:
-                obstacles.append(saw(810, 310, 64, 64))
+            
 
 
             for x in obstacles:
