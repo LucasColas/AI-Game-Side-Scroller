@@ -24,6 +24,8 @@ Stat_Font = pygame.font.SysFont("comicsans", 20)
 
 gen = 0
 
+runner_image = pygame.image.load(os.path.join("images", "0.png"))
+
 class player(object):
     run = [pygame.image.load(os.path.join('images', str(x) + '.png')) for x in range(8,16)]
     jump = [pygame.image.load(os.path.join('images', str(x) + '.png')) for x in range(1,8)]
@@ -177,10 +179,12 @@ def redrawWindow(runners, obstacles, score, gen, x_obs, y_obs):
     alive_text = Stat_Font.render("Alive : " + str(len(runners)), 1, white)
     win.blit(alive_text, (W - 10 - alive_text.get_width(), 70))
 
+    """
     if len(runners) > 0:
         for runner in runners:
 
-            pygame.draw.line(win, (255, 0, 0), (round(runner.x)+15, round(runner.y)), (round(x_obs), round(y_obs)), 2)
+            pygame.draw.line(win, (255, 0, 0), (round(runner.x)+runner_image.get_width()//2, round(runner.y)), (round(x_obs)+20, round(y_obs)), 2)
+    """
     #pygame.draw.line(win, (255, 0,0), (0,10), (150,10), 2)
 
     pygame.display.update()
