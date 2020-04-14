@@ -180,7 +180,7 @@ def redrawWindow(runners, obstacles, score, gen, x_obs, y_obs):
     if len(runners) > 0:
         for runner in runners:
 
-            pygame.draw.line(win, (255, 0, 0), (runners.x, runners.y), round(y_obs)), 2)
+            pygame.draw.line(win, (255, 0, 0), (round(runners.x), round(runners.y)), (round(x_obs), round(y_obs)), 2)
     #pygame.draw.line(win, (255, 0,0), (0,10), (150,10), 2)
 
     pygame.display.update()
