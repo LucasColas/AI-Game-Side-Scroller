@@ -31,3 +31,6 @@ You can download it here : http://www.pygame.org/downloads.shtml
 Or here : https://pypi.org/project/pygame/
 
 It's a pip installation. 
+
+
+Original game from TechWithTim
