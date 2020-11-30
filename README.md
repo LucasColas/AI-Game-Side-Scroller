@@ -33,4 +33,4 @@ Or here : https://pypi.org/project/pygame/
 It's a pip installation. 
 
 
-Original game from TechWithTim
+Original game from @techwithtim : https://github.com/techwithtim  
