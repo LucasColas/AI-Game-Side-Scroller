@@ -6,9 +6,11 @@ import math
 import random
 import neat
 
-#Initialize
+#Initialize modules
 pygame.init()
 pygame.font.init()
+
+#Variables
 W, H = 800, 437
 win = pygame.display.set_mode((W,H))
 pygame.display.set_caption('AI Side Scroller')
@@ -141,15 +143,19 @@ class spike(saw):
         self.passed = False
 
         self.passed = False
+        
+        
     def draw(self,win):
         self.hitbox = (self.x + 10, self.y, 28,315)
         pygame.draw.rect(win, (255,0,0), self.hitbox, 2)
         win.blit(self.img, (self.x,self.y))
 
     def collide(self, rect):
+        
         if rect[0] + rect[2] > self.hitbox[0] and rect[0] < self.hitbox[0] + self.hitbox[2]:
             if rect[1] < self.hitbox[3]:
                 return True
+            
         return False
 
 
@@ -179,8 +185,9 @@ def redrawWindow(runners, obstacles, score, gen, x_obs, y_obs):
     alive_text = Stat_Font.render("Alive : " + str(len(runners)), 1, white)
     win.blit(alive_text, (W - 10 - alive_text.get_width(), 70))
 
+    
     """
-    if len(runners) > 0:
+    if len(runners) > 0: 
         for runner in runners:
 
             pygame.draw.line(win, (255, 0, 0), (round(runner.x)+runner_image.get_width()//2, round(runner.y)), (round(x_obs)+20, round(y_obs)), 2)
@@ -190,7 +197,7 @@ def redrawWindow(runners, obstacles, score, gen, x_obs, y_obs):
     pygame.display.update()
 
 
-def main(genomes, config):
+def main(genomes, config): #AI
 
     global bgX
     global bgX2
