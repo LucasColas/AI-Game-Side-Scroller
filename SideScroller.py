@@ -1,9 +1,15 @@
-
+#Module to render our game
 import pygame
+
+#Module to help us to import our files
 import os
-import sys
+#import sys
+
+#Modules for calculation
 import math
 import random
+
+#Module for our AI
 import neat
 
 #Initialize modules
