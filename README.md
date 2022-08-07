@@ -6,8 +6,8 @@
 First, you need to install :
 
 ```
-neat
-pygame
+neat : https://neat-python.readthedocs.io/en/latest/
+pygame : https://www.pygame.org/news
 ```
 
 Then you can run "SideScroller.py" and that's it !
